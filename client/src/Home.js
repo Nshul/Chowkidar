@@ -6,48 +6,29 @@ class Home extends Component {
 	constructor(props) {
 		super(props);
 
-		subscribeToTimer((err, users) =>
+		subscribeToTimer((err, users) => {
+			console.log(users);
 			this.setState({
 				users
-			})
-		);
+			});
+		});
 	}
 
 	state = {
-		users: [
-			{
-				name: 'Anshul',
-				cart: [
-					{
-						item: 'drink',
-						qty: 2
-					},
-					{
-						item: 'chips',
-						qty: 3
-					}
-				],
-				total: 140
-			},
-			{
-				name: 'Parikansh',
-				cart: [
-					{
-						item: 'drink',
-						qty: 2
-					},
-					{
-						item: 'chips',
-						qty: 3
-					}
-				],
-				total: 200
-			}
-		]
+		users: []
 	};
 
 	renderCartItemsOfUser(items) {
-		return items.map((item, i) => {
+		let Items = [];
+
+		for (var i in items) {
+			Items.push({
+				item: i,
+				qty: items[i]
+			});
+		}
+
+		return Items.map((item, i) => {
 			return (
 				<div className="card-item">
 					<div className="card-item-name">
@@ -62,33 +43,16 @@ class Home extends Component {
 	}
 
 	renderCards() {
+		console.log(this.state);
 		return this.state.users.map((user, i) => {
 			return (
-				// <div>
-				// 	<br />
-				// 	<div className="uk-card uk-card-default uk-width-1-2@m">
-				// 		<div className="uk-card-header">
-				// 			<div className="uk-grid-small uk-flex-middle" uk-grid>
-				// 				<div className="uk-width-auto" />
-				// 				<div className="uk-width-expand">
-				// 					<h3 className="uk-card-title uk-margin-remove-bottom">{user.name}</h3>
-				// 				</div>
-				// 			</div>
-				// 		</div>
-				// 		<div className="uk-card-body">
-				// 			<dl class="uk-description-list uk-description-list-divider">{this.renderCartItemsOfUser(user.cart)}</dl>
-				// 		</div>
-				// 		<div className="uk-card-body">
-				// 			<dl class="uk-description-list uk-description-list-divider">{this.renderCartItemsOfUser(user.cart)}</dl>
-				// 		</div>
-				// 		<div className="uk-card-footer">Total: {user.total}</div>
-				// 	</div>
-				// </div>
 				<div className="card">
 					<div className="card-top">
 						<div className="card-head">
-							<a className="card-top-icon" uk-icon="user" />
-							{user.name}
+							<div>
+								<img className="card-top-icon" src="/image/man.png" />
+							</div>
+							<div className="card-head-text">{user.name}</div>
 						</div>
 					</div>
 					<div>{this.renderCartItemsOfUser(user.cart)}</div>
@@ -106,7 +70,7 @@ class Home extends Component {
 	}
 
 	render() {
-		return <div>{this.renderCards()}</div>;
+		return <div className="contain">{this.renderCards()}</div>;
 	}
 }
 

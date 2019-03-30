@@ -2,7 +2,6 @@ var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
-	MONGO_URI = require('./config'),
 	flash = require('connect-flash'),
 	methodOverride = require('method-override');
 
@@ -10,7 +9,26 @@ var indexRoutes = require('./routes/index');
 
 mongoose.Promise = global.Promise;
 
-// mongoose.connect(MONGO_URI);
+mongoose.connect('mongodb://localhost/hacknsut');
+
+var schema = new mongoose.Schema({
+	name: String
+});
+
+var Schema = mongoose.model('Schema', schema);
+
+// Schema.create(
+// 	{
+// 		name: 'PA'
+// 	},
+// 	(err, data) => {
+// 		console.log(data);
+// 	}
+// );
+
+Schema.find().then((data) => {
+	console.log(data);
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
