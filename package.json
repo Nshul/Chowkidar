@@ -1,30 +1,29 @@
 {
-	"name": "Chowkidar",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Nshul/Chowkidar.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Nshul/Chowkidar/issues"
-	},
-	"homepage": "https://github.com/Nshul/Chowkidar#readme",
-	"dependencies": {
-		"@zeit/next-css": "^1.0.1",
-		"express": "^4.16.4",
-		"next": "^8.0.3",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
-	}
+  "name": "chowkidar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nshul/Chowkidar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nshul/Chowkidar/issues"
+  },
+  "homepage": "https://github.com/Nshul/Chowkidar#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.20",
+    "passport": "^0.4.0"
+  }
 }
