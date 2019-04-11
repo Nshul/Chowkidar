@@ -2,8 +2,8 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:8000');
 
 function subscribeToTimer(cb) {
-  socket.on('timer', (users) => cb(null, users));
-  socket.emit('subscribeToTimer', 1000);
+	socket.on('timer', (obj) => cb(null, obj));
+	socket.emit('subscribeToTimer', 1000);
 }
 
 export { subscribeToTimer };

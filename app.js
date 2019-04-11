@@ -9,7 +9,7 @@ var indexRoutes = require('./routes/index');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/hacknsut');
+mongoose.connect('mongodb://user:password123@ds137596.mlab.com:37596/chowkidaar');
 
 var schema = new mongoose.Schema({
 	name: String
@@ -53,6 +53,6 @@ app.use(function(req, res, next) {
 
 app.use(indexRoutes);
 
-app.listen(8000, () => {
+app.listen(3000, () => {
 	console.log('Server has started');
 });

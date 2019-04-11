@@ -7,10 +7,9 @@ const MESSAGE_TYPES = {
 	entry: 'ENTRY',
 	exit: 'EXIT',
 	objectPick: 'OBJECTPICK',
-	objectDrop: 'OBJECTDROP'
+	objectDrop: 'OBJECTDROP',
+	emotion: 'EMOTION'
 };
-
-let alreadyPresent = [];
 
 class P2PServer {
 	constructor(state) {
@@ -41,7 +40,7 @@ class P2PServer {
 		console.log('Socket connected');
 
 		this.messageHandler(socket);
-		this.sendChain(socket);
+		// this.sendChain(socket);
 	}
 
 	messageHandler(socket) {
@@ -55,7 +54,15 @@ class P2PServer {
 				case MESSAGE_TYPES.objectDrop:
 					this.state.decreaseQty(data.data);
 					break;
-
+				case MESSAGE_TYPES.entry:
+					this.state.entryPoint(data.data);
+					break;
+				case MESSAGE_TYPES.exit:
+					this.state.exitPoint(data.data);
+					break;
+				case MESSAGE_TYPES.emotion:
+					this.state.emotion(data.data);
+					break;
 				default:
 					console.log('Default reached for switch case in messageHandler at p2pServer');
 			}
